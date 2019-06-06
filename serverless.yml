@@ -1,0 +1,45 @@
+service: serverless-example
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+custom:
+  documentation:
+    models:
+      -
+        name: HelloModel
+        contentType: application/json
+        schema:
+          type: object
+          properties:
+            message:
+              type: string
+              minLength: 2
+          required:
+            - message
+functions:
+  helloWorld:
+    handler: handler.helloWorld
+    events:
+      - http:
+          path: hello-world
+          #integration: lambda
+          method: post
+          reqValidatorName: myValidator
+          documentation:
+            requestModels:
+              "application/json": HelloModel
+resources:
+  Resources:
+    myValidator:
+      Type: "AWS::ApiGateway::RequestValidator"
+      Properties:
+        Name: 'my-validator'
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: true
+        ValidateRequestParameters: false
