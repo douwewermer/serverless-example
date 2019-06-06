@@ -46,4 +46,6 @@ I believe this might be an issue with the plugin, since both cases work fine aft
 
 ### Aditional notes
 
+When using debug mode ( `export SLS_DEBUG=*;serverless offline start` ) when sending a request, we can see that the request body is stringified when using the default integration ( `integration: lambda-proxy` ), but it's not stringified when using lambda integration ( `integration: lambda` ). This might be causing the error `"SyntaxError: Unexpected token o in JSON at position 1","at JSON.parse (<anonymous>)"`.
+
 When disabling model validation ( `serverless offline start --disableModelValidation` ) the response is `{"message":"Succes!"}` in both cases.
