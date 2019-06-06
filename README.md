@@ -43,3 +43,7 @@ However, when we change integration to lambda by uncommenting `#integration: lam
 ```
 
 I believe this might be an issue with the plugin, since both cases work fine after deploying to AWS.
+
+### Aditional notes
+
+When disabling model validation ( `serverless offline start --disableModelValidation` ) the response is `{"message":"Succes!"}` in both cases.
