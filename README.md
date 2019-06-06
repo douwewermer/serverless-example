@@ -5,6 +5,7 @@ https://github.com/dherault/serverless-offline/issues/676
 
 The serverless.yml file was copied from:
 https://www.npmjs.com/package/serverless-offline#request-body-validation
+
 It contains a function with the path `hello-world` which requires a body containing a property `message` with a minimum length of 2.
 
 ## The issue
